@@ -112,5 +112,11 @@ async function ligar() {
 }
 
 async function desligar() {
-    
+    if (track) {
+        try {
+            await track.applyConstraints({ advanced: [{ torch: false }] })
+        } catch (error) {
+            console.error(`Erro ao inicializar a lanterna: ${error}`)
+        }
+    }
 }
